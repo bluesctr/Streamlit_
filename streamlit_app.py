@@ -21,42 +21,9 @@ else:
 
 st.title("OpenAI GPT model")
 
-
-# 캐시 적용
-@st.cache_data
-def get_llm_response(prompt, api_key):
-    client = OpenAI(api_key=api_key)
-
-    response = client.responses.create(
-        model="gpt-5.4-mini",
-        input=prompt
-    )
-
-    return response.output_text
+if st.button("채팅 페이지로 이동"):
+    st.switch_page("pages/chat.py")
 
 
-# 캐시 적용
-@st.cache_data
-def generate_image(image_prompt, api_key):
-    client = OpenAI(api_key=api_key)
-
-    img = client.images.generate(
-        model="gpt-image-1-mini",
-        prompt=image_prompt
-    )
-
-    image_bytes = base64.b64decode(img.data[0].b64_json)
-
-    return image_bytes
-
-
-prompt = st.text_area("User prompt")
-
-if st.button("Ask!", disabled=(len(prompt) == 0)):
-    st.write(get_llm_response(prompt, api_key))
-
-
-image_prompt = st.text_area("Image prompt")
-
-if st.button("Generate!", disabled=(len(image_prompt) == 0)):
-    st.image(generate_image(image_prompt, api_key))
+if st.button("이미지 페이지로 이동"):
+    st.switch_page("pages/image.py")
