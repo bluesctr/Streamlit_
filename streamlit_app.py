@@ -2,6 +2,10 @@ import streamlit as st
 import base64
 from openai import OpenAI
 
+
+if "api_key" not in st.session_state:
+    st.session_state.api_key = ""
+
 def get_llm_response(prompt):
     response = client.responses.create(
         model="gpt-5.4-mini",
@@ -16,7 +20,10 @@ def generate_image(image_prompt):
 
 st.title("OpenAI GPT model")
 
-api_key= st.text_input("OpenAI API Key", type="password")
+api_key= st.text_input("OpenAI API Key", type="password", value=st.session_state.api_key)
+
+st.session_state.api_key = api_key
+
 if api_key:
     client = OpenAI(api_key=api_key)
 else:
