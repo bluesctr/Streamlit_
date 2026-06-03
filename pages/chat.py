@@ -6,6 +6,7 @@ st.title("Chat Page")
 api_key = st.session_state.api_key
 
 if not api_key:
+    st.write("먼저 API키를 입력하세요.")
     st.stop()
 
 # 대화 기록 저장용 session_state
