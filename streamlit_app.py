@@ -2,7 +2,8 @@ import streamlit as st
 import base64
 from openai import OpenAI
 
-# API KEY 저장
+st.title("OpenAI GPT model")
+
 if "api_key" not in st.session_state:
     st.session_state.api_key = ""
 
@@ -19,7 +20,6 @@ if api_key:
 else:
     st.stop()
 
-st.title("OpenAI GPT model")
 
 if st.button("채팅 페이지로 이동"):
     st.switch_page("pages/chat.py")

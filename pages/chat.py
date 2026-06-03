@@ -4,6 +4,8 @@ from openai import OpenAI
 
 st.title("Chat Page")
 
+api_key=st.session_state.api_key
+
 @st.cache_data
 def get_llm_response(prompt, api_key):
     client = OpenAI(api_key=api_key)
