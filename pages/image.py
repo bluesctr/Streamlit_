@@ -24,5 +24,3 @@ image_prompt = st.text_area("Image prompt")
 if st.button("Generate!", disabled=(len(image_prompt) == 0)):
     st.image(generate_image(image_prompt, api_key))
 
-if st.button("메인으로"):
-    st.switch_page("app.py")

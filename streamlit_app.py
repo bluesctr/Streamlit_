@@ -20,10 +20,3 @@ if api_key:
 else:
     st.stop()
 
-
-if st.button("채팅 페이지로 이동"):
-    st.switch_page("pages/chat.py")
-
-
-if st.button("이미지 페이지로 이동"):
-    st.switch_page("pages/image.py")
